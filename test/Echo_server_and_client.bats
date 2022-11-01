@@ -2,6 +2,7 @@
 
 setup() {
   BATS_TMPDIR=`mktemp --directory`
+  echo "$BATS_TMPDIR"
   cd src
   rm -f echoserver/EchoServer.class
   javac echoserver/*.java
@@ -11,7 +12,7 @@ setup() {
 }
 
 teardown() {
-  rm -rf "$BATS_TMPDIR"
+#  rm -rf "$BATS_TMPDIR"
   kill %1
   # This sleep is crucial to ensure that the server shuts down completely
   # and relinquishes the port before we move on to the next test.
